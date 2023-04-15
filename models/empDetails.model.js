@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
-
+const uniqueValidator = require("mongoose-unique-validator");
 const createEmp = mongoose.Schema({
     
     empid: {
         type: String,
         required: true,
+        unique: true,
     },
     empname: {
         type: String,
@@ -40,4 +41,7 @@ const createEmp = mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('createEmp',createEmp);
+const Empdetails= mongoose.model('createEmp',createEmp);
+module.exports = Empdetails;
+
+createEmp.plugin(uniqueValidator, {message: "Employee Id already exist in database"});

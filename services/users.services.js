@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+
 const bcrypt = require("bcryptjs");
 const auth = require("../middlewares/auth.js");
 
@@ -37,6 +38,8 @@ async function register(params, callback) {
         return callback(error);
     }) ;
 }
+
+
 
 module.exports = {
     login,
