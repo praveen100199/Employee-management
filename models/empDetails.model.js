@@ -3,7 +3,7 @@ const uniqueValidator = require("mongoose-unique-validator");
 const createEmp = mongoose.Schema({
     
     empid: {
-        type: String,
+        type: Number,
         required: true,
         unique: true,
     },
@@ -28,15 +28,19 @@ const createEmp = mongoose.Schema({
         required: true,
     },
     skills: {
-        type: String,
+        type: Array,
         required: false,
     },
+    isActive:{
+        type: Boolean,
+        required:true,
+    },
     certificates: {
-        type: String,
+        type: Array,
         required: false,
     },
     yearsofexperiance: {
-        type: Date,
+        type: Number,
         required: false,
     },
 })
