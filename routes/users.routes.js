@@ -3,6 +3,7 @@ const create = require('../controllers/createEmp.controller');
 const getEmp = require('../controllers/getEmp.controller');
 const updateEmployees = require('../controllers/updateEmp.controller')
 const delEmp = require("../controllers/deleteEmp.controller");
+const search = require("../controllers/searchEmp.controller")
 const Status = require("../controllers/isActive.controller")
 
 const express = require("express");
@@ -19,6 +20,7 @@ router.put('/updateemp/:id',updateEmployees.updateEmp);
 router.delete('/delemp/:id',delEmp.deleteEmp);
 router.get('/active', Status.Active); // to get all active employees
 router.get('/status', Status.isActive); 
+router.get('/searchemp/',search.SearchEmp);
 
 module.exports = router;
 

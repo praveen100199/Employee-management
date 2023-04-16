@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require("mongoose-unique-validator");
-const createEmp = mongoose.Schema({
+const createEmp = mongoose.Schema([{
     
     empid: {
         type: Number,
@@ -43,7 +43,7 @@ const createEmp = mongoose.Schema({
         type: Number,
         required: false,
     },
-})
+}])
 
 const Empdetails= mongoose.model('createEmp',createEmp);
 module.exports = Empdetails;
