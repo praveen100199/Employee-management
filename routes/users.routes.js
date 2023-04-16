@@ -17,7 +17,8 @@ router.get('/getallemp',getEmp.getEmployees);
 router.get('/getemp/:id',getEmp.getEmployeeById);
 router.put('/updateemp/:id',updateEmployees.updateEmp);
 router.delete('/delemp/:id',delEmp.deleteEmp);
-router.get('/isactive', Status.isActive);
+router.get('/active', Status.Active); // to get all active employees
+router.get('/status', Status.isActive); 
 
 module.exports = router;
 
