@@ -91,7 +91,7 @@ exports.SearchEmp = async (req, res) => {
         });
     }
 
-    else if(!ename && !eid ){
+    else if(!ename && !eid && empSkills && empPosition){
         res.json({ message: "Please provide correct information" })
     }
 

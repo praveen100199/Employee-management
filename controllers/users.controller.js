@@ -12,6 +12,7 @@ exports.register = (req,res, next) => {
             return next(error);
         }
         return res.status(200).send({
+            status: 200,
             message: "Success",
             data: result,
         });

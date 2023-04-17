@@ -15,7 +15,7 @@ function authenticateToken(req,res,next) {
 
 function generateAccessToken(username) {
     return jwt.sign({data: username}, "empManagement_SceretKEY", {
-        expiresIn: '30h'
+        expiresIn: '60h'
     });
 }
 
