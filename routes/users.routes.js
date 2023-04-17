@@ -7,6 +7,8 @@ const search = require("../controllers/searchEmp.controller");
 const Status = require("../controllers/isActive.controller");
 const performance = require('../controllers/performance.controller');
 const ratings = require('../controllers/ratings.controller');
+const projects = require('../controllers/projects.controller');
+
 
 const express = require("express");
 const router = express.Router();
@@ -27,7 +29,13 @@ router.get('/status', Status.isActive);
 router.get('/searchemp/',search.SearchEmp);
 
 router.post('/performance',performance.createPerformance);
-router.get('/ratings',ratings.getRatings)
+router.get('/ratings',ratings.getRatings);
+router.get('/goodratings',ratings.getRatingMoreThanThree);
+router.get('/badratings',ratings.getRatingLessThanThree);
+
+router.post('/projects',projects.createProjects);
+router.get('/searchprojects', projects.SearchProjects);
+router.get('/getprojects',projects.getAllProjects);
 
 module.exports = router;
 
