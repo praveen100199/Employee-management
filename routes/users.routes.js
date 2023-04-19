@@ -33,7 +33,7 @@ router.get('/ratings',ratings.getRatings);
 router.get('/goodratings',ratings.getRatingMoreThanThree);
 router.get('/badratings',ratings.getRatingLessThanThree);
 
-router.post('/projects',projects.createProjects);
+router.post('/createprojects',projects.createProjects);
 router.get('/searchprojects', projects.SearchProjects);
 router.get('/getprojects',projects.getAllProjects);
 

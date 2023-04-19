@@ -15,7 +15,7 @@ const projects = mongoose.Schema([{
         type: Array,
         required: true,
     },
-    skills: {
+    techstack: {
         type: Array,
         required:true
     },
