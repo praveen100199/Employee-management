@@ -28,7 +28,6 @@ const employeeExists = await doesEmployeeExist(req.body.empid);
             });
         });
     }
-
     else{
         res.json({ message: "Create Employee before inserting the projects" })
     }
@@ -99,8 +98,6 @@ exports.SearchProjects = async (req, res) => {
             });
         });
     }
-
-
     // Search employee based on the emp id
     if(empid){
         const empid = parseInt(req.query.empid);
@@ -114,5 +111,91 @@ exports.SearchProjects = async (req, res) => {
             res.status(500).json({ message: error.message });
         }
     }
+
+    else{
+        res.json({message: "Enter correct input to display the results."})
+    }
 }
 
+
+// multiple search on projects
+exports.multipleSearch = async (req,res, next) => {
+
+    const projects = req.body.projects;
+    const techstack =req.body.techstack;
+    const projectsArray = Array.isArray(projects);
+    const techstackArray = Array.isArray(techstack); 
+
+if(projectsArray && techstackArray){
+    const Condition1 =  { $and: [
+        { projects: { $in: projects } },
+        { techstack: { $in: techstack } }
+    ]}
+    try {
+        const emp = await projectsModel.find(Condition1)
+        if (!emp) {
+        return res.status(404).json({ message: "Employee not found" });
+        }
+        else{
+            res.send(emp);
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+
+else if(!projectsArray && !techstackArray){
+    const Condition2 =  { $and: [
+        { projects: { $regex: projects, $options: 'i' } },
+        { techstack: { $regex: techstack, $options: 'i' } }
+    ]}
+    try {
+        const emp = await projectsModel.find(Condition2)
+        if (!emp) {
+        return res.status(404).json({ message: "Employee not found" });
+        }
+        else{
+            res.send(emp);
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+else if(projectsArray && !techstackArray){
+    const Condition3 =  { $and: [
+        { projects: { $in: projects } },
+        { techstack: { $regex: techstack, $options: 'i' } }
+    ]}
+    try {
+        const emp = await projectsModel.find(Condition3)
+        if (!emp) {
+        return res.status(404).json({ message: "Employee not found" });
+        }
+        else{
+            res.send(emp);
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+else if(!projectsArray || techstackArray){
+    const Condition4 =  { $and: [
+        { projects: { $regex: projects, $options: 'i' } },
+        { techstack: { $in: techstack } }
+    ]}
+    try {
+        const emp = await projectsModel.find(Condition4)
+        if (!emp) {
+        return res.status(404).json({ message: "Employee not found" });
+        }
+        else{
+            res.send(emp);
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+};
