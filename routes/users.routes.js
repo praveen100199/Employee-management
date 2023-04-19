@@ -37,6 +37,7 @@ router.post('/createprojects',projects.createProjects);
 router.get('/searchprojects', projects.SearchProjects);
 router.get('/getprojects',projects.getAllProjects);
 router.post('/multiplesearch',projects.multipleSearch);
+router.post('/empmultiplesearch', search.multipleSearchOnEmployees)
 
 module.exports = router;
 

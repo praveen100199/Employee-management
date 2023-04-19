@@ -96,3 +96,48 @@ exports.SearchEmp = async (req, res) => {
     }
 
 };
+
+// multiple search for employee
+exports.multipleSearchOnEmployees = async (req,res, next) => {
+
+    const skills = req.body.skills;
+    const yearsofexperiance =req.body.yearsofexperiance;
+    const skillsArray = Array.isArray(skills);
+
+if(skillsArray && yearsofexperiance){
+    const Condition1 =  { $and: [
+        { skills: { $in: skills } },
+        { yearsofexperiance: { $in: yearsofexperiance } }
+    ]}
+    try {
+        const emp = await Empdetails.find(Condition1)
+        if (!emp) {
+        return res.status(404).json({ message: "Employee not found" });
+        }
+        else{
+            res.send(emp);
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+
+else if(!skillsArray && yearsofexperiance){
+    const Condition2 =  { $and: [
+        { skills: { $regex: skills, $options: 'i' } },
+        { yearsofexperiance: { $in: yearsofexperiance } }
+    ]}
+    try {
+        const emp = await Empdetails.find(Condition2)
+        if (!emp) {
+        return res.status(404).json({ message: "Employee not found" });
+        }
+        else{
+            res.send(emp);
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+};
