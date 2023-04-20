@@ -13,9 +13,10 @@ function authenticateToken(req,res,next) {
     });
 }
 
+//create token and return 
 function generateAccessToken(username) {
     return jwt.sign({data: username}, "empManagement_SceretKEY", {
-        expiresIn: '60h'
+        expiresIn: '60h' //payload,secretkey,expiry
     });
 }
 
