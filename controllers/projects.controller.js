@@ -181,7 +181,7 @@ else if(projectsArray && !techstackArray){
     }
 }
 
-else if(!projectsArray || techstackArray){
+else if(!projectsArray && techstackArray){
     const Condition4 =  { $and: [
         { projects: { $regex: projects, $options: 'i' } },
         { techstack: { $in: techstack } }
