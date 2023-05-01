@@ -1,5 +1,7 @@
 const bcryptjs = require('bcryptjs');
 const userService = require('../services/users.services');
+const logger = require("../middlewares/logger")
+
 
 exports.register = (req,res, next) => {
     const {password} = req.body;
@@ -9,10 +11,11 @@ exports.register = (req,res, next) => {
 
     userService.register(req.body, (error, result) => {
         if(error) {
+            logger.employeeLogger.error(err);
             return next(error);
         }
         return res.status(200).send({
-            status: 200,
+            status: true,
             message: "Success",
             data: result,
         });

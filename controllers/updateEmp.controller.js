@@ -1,4 +1,5 @@
 const Empdetails = require("../models/empDetails.model");
+const logger = require("../middlewares/logger")
 
 
 // Update a user by the id in the request
@@ -20,6 +21,7 @@ exports.updateEmp = async (req, res) => {
             res.send({ message: "User updated successfully." })
         }
     }).catch(err => {
+        logger.employeeLogger.error(err);
         res.status(500).send({
             message: err.message
         });

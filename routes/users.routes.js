@@ -8,6 +8,7 @@ const Status = require("../controllers/isActive.controller");
 const performance = require('../controllers/performance.controller');
 const ratings = require('../controllers/ratings.controller');
 const projects = require('../controllers/projects.controller');
+const hiredEmp = require('../controllers/filterHiredEmp.controller');
 
 
 const express = require("express");
@@ -37,7 +38,8 @@ router.post('/createprojects',projects.createProjects);
 router.get('/searchprojects', projects.SearchProjects);
 router.get('/getprojects',projects.getAllProjects);
 router.post('/multiplesearch',projects.multipleSearch);
-router.post('/empmultiplesearch', search.multipleSearchOnEmployees)
+router.post('/empmultiplesearch', search.multipleSearchOnEmployees);
+router.post('/filterhiredemp', hiredEmp.HiredEmp);
 
 module.exports = router;
 

@@ -1,5 +1,5 @@
 const Empdetails = require("../models/empDetails.model");
-
+const logger = require("../middlewares/logger")
 
 // to get all active employees from the database
 
@@ -14,6 +14,7 @@ exports.Active = async (req,res) => {
             "Active Employees":activeEmployees })
     }
     catch(err){
+        logger.employeeLogger.error(err);
         res.status(500).json({ status:500, message:"failed", error: err.message || "internal server error"});
     }
 }
@@ -28,6 +29,7 @@ exports.isActive = (req,res) => {
             res.send({status:200, message:"Success", "Count of Employees":data.length, data:data});
         })
     .catch(err => {
+        logger.employeeLogger.error(err);
             res.status(500).send({
             message:
             err.message || "Some error occurred while retrieving the employee details"

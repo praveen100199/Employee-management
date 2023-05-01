@@ -1,6 +1,7 @@
 const projectService = require('../services/projects.services');
 const projectsModel = require("../models/projects.model");
 const Empdetails = require("../models/empDetails.model");
+const logger = require("../middlewares/logger")
 
 
 // Define a function to check if an employee exists
@@ -19,6 +20,7 @@ const employeeExists = await doesEmployeeExist(req.body.empid);
     if(employeeExists){
         projectService.createProjects(req.body, (error, result) => {
             if(error) {
+                logger.employeeLogger.error(error);
                 return res.json({ message:"Projects with this id already exsists in data base" });
             }
             return res.status(200).send({
@@ -40,6 +42,7 @@ exports.getAllProjects = async (req,res) => {
         res.status(200).json({ status:200, message:"success", employees:user });
     } 
     catch(err) {
+        logger.employeeLogger.error(err);
         res.status(404).json({status:404, message:"failed", error: error.message});
     }
 };
@@ -68,6 +71,7 @@ exports.SearchProjects = async (req, res) => {
             
         })
         .catch(err => {
+            logger.employeeLogger.error(err);
             res.status(500).send({
             message:
                 err.message || "Some error occurred while retrieving data"
@@ -92,6 +96,7 @@ exports.SearchProjects = async (req, res) => {
             
         })
         .catch(err => {
+            logger.employeeLogger.error(err);
             res.status(500).send({
             message:
                 err.message || "Some error occurred while retrieving data"
@@ -108,6 +113,7 @@ exports.SearchProjects = async (req, res) => {
             }
             res.json(emp);
         } catch (error) {
+            logger.employeeLogger.error(err);
             res.status(500).json({ message: error.message });
         }
     }
@@ -140,6 +146,7 @@ if(projectsArray && techstackArray){
             res.send(emp);
         }
     } catch (error) {
+        logger.employeeLogger.error(error);
         res.status(500).json({ message: error.message });
     }
 }
@@ -159,6 +166,7 @@ else if(!projectsArray && !techstackArray){
             res.send(emp);
         }
     } catch (error) {
+        logger.employeeLogger.error(error);
         res.status(500).json({ message: error.message });
     }
 }
@@ -177,6 +185,7 @@ else if(projectsArray && !techstackArray){
             res.send(emp);
         }
     } catch (error) {
+        logger.employeeLogger.error(error);
         res.status(500).json({ message: error.message });
     }
 }
@@ -195,6 +204,7 @@ else if(!projectsArray && techstackArray){
             res.send(emp);
         }
     } catch (error) {
+        logger.employeeLogger.error(error);
         res.status(500).json({ message: error.message });
     }
 }

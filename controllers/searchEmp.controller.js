@@ -1,8 +1,7 @@
 const Empdetails = require("../models/empDetails.model");
-
+const logger = require("../middlewares/logger")
 
 // Search employees based on name, id, position and skills
-
 exports.SearchEmp = async (req, res) => {
     const ename = req.query.hasOwnProperty("empname");
     const eid = req.query.hasOwnProperty("empid");
@@ -26,6 +25,7 @@ exports.SearchEmp = async (req, res) => {
             
         })
         .catch(err => {
+            logger.employeeLogger.error(err);
             res.status(500).send({
             message:
                 err.message || "Some error occurred while retrieving data"
@@ -43,6 +43,7 @@ exports.SearchEmp = async (req, res) => {
             }
             res.json(emp);
         } catch (error) {
+            logger.employeeLogger.error(err);
             res.status(500).json({ message: error.message });
         }
     }
@@ -62,6 +63,7 @@ exports.SearchEmp = async (req, res) => {
             }
         })
         .catch(err => {
+            logger.employeeLogger.error(err);
             res.status(500).send({
             message:
                 err.message || "Some error occurred while retrieving data"
@@ -84,6 +86,7 @@ exports.SearchEmp = async (req, res) => {
             }
         })
         .catch(err => {
+            logger.employeeLogger.error(err);
             res.status(500).send({
             message:
                 err.message || "Some error occurred while retrieving data"
@@ -118,6 +121,7 @@ if(skillsArray && yearsofexperiance){
             res.send(emp);
         }
     } catch (error) {
+        logger.employeeLogger.error(err);
         res.status(500).json({ message: error.message });
     }
 }
@@ -137,6 +141,7 @@ else if(!skillsArray && yearsofexperiance){
             res.send(emp);
         }
     } catch (error) {
+        logger.employeeLogger.error(err);
         res.status(500).json({ message: error.message });
     }
 }

@@ -1,4 +1,5 @@
 const performance = require("../models/performance.model");
+const logger = require("../middlewares/logger")
 
     //get ratings of employees based on the emp rating value
     
@@ -11,6 +12,7 @@ const performance = require("../models/performance.model");
             }
             res.json({status:200, message:"Success", Ratings: emprating});
         } catch (error) {
+            logger.employeeLogger.error(error);
             res.status(500).json({ message: error.message });
         }
     }
@@ -26,6 +28,7 @@ const performance = require("../models/performance.model");
             }
             res.json({status:200, message:"Success", goodRatings: emprating});
         } catch (error) {
+            logger.employeeLogger.error(error);
             res.status(500).json({ message: error.message });
         }
     }
@@ -42,6 +45,7 @@ const performance = require("../models/performance.model");
             }
             res.json({status:200, message:"Success", badRatings: emprating});
         } catch (error) {
+            logger.employeeLogger.error(error);
             res.status(500).json({ message: error.message });
         }
     }

@@ -1,0 +1,11 @@
+2023-05-01T10:07:35.922Z [ERROR]: Cast to date failed for value "Invalid Date" (type Date) at path "dateofjoining" for model "createEmp"
+2023-05-01T10:08:06.699Z [ERROR]: Cast to date failed for value "Invalid Date" (type Date) at path "dateofjoining" for model "createEmp"
+2023-05-01T10:10:16.426Z [ERROR]: Cast to date failed for value "Invalid Date" (type Date) at path "dateofjoining" for model "createEmp"
+2023-05-01T10:11:55.222Z [ERROR]: Cast to date failed for value "Invalid Date" (type Date) at path "dateofjoining" for model "createEmp"
+2023-05-01T10:12:00.070Z [ERROR]: Cast to date failed for value "Invalid Date" (type Date) at path "dateofjoining" for model "createEmp"
+2023-05-01T10:12:26.883Z [ERROR]: Cast to date failed for value "Invalid Date" (type Date) at path "dateofjoining" for model "createEmp"
+2023-05-01T10:14:37.410Z [ERROR]: Cast to date failed for value "Invalid Date" (type Date) at path "dateofjoining" for model "createEmp"
+2023-05-01T10:18:31.008Z [ERROR]: Cast to date failed for value "Invalid Date" (type Date) at path "dateofjoining" for model "createEmp"
+2023-05-01T10:39:20.661Z [ERROR]: Cannot set headers after they are sent to the client
+2023-05-01T10:42:59.723Z [ERROR]: Cannot set headers after they are sent to the client
+2023-05-01T10:43:38.178Z [ERROR]: Cannot set headers after they are sent to the client
