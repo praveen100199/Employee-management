@@ -9,3 +9,5 @@
 2023-05-01T10:39:20.661Z [ERROR]: Cannot set headers after they are sent to the client
 2023-05-01T10:42:59.723Z [ERROR]: Cannot set headers after they are sent to the client
 2023-05-01T10:43:38.178Z [ERROR]: Cannot set headers after they are sent to the client
+2023-05-01T11:06:37.406Z [ERROR]: Cast to ObjectId failed for value "643b9b7f9dd8ad7b7822a" (type string) at path "_id" for model "createEmp"
+2023-05-01T11:22:35.419Z [ERROR]: empPerformance validation failed: empid: Employee Id already exist in database
