@@ -28,6 +28,9 @@ app.use(
         path: [
             {url: '/users/login', methods: ['POST']},
             {url: '/users/register', methods: ['POST']},
+            // {url: '/users/getallemp', methods: ['GET']},
+            // {url: '/users/getemp/:id', methods: ['GET']},
+
         ],
     })
 );
@@ -38,8 +41,12 @@ app.use("/users", require("./routes/users.routes"));
 
 app.use(errors.errorHandler);
 
-app.listen(process.env.port || 4000, function(){
-    console.log("server is runing....");
+const server = app.listen(process.env.port || 4000, function(){
+    console.log("server listening on port 4000");
+    setTimeout(function(){
+        console.log("server is running at http://127.0.0.1:4000/");
+    }, 1000);
 });
 
+module.exports=app;
 
